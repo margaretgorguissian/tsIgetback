@@ -25,7 +25,7 @@ export async function handleCreateUser(req: express.Request, res: express.Respon
         try {
             const newUser: DatabaseResult<IUser> = await db.createUser(obj.firstName,
                                                                        obj.lastName,
-                                                                       obj.email,
+                                                                       obj.email.toLowerCase(),
                                                                        obj.password);
             newUser.caseOf({
                 right: async newUser => {
